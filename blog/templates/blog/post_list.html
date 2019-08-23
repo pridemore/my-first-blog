@@ -11,15 +11,13 @@
         </div>
 
         <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>This is Ruby Publication</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>This is Type script publication</p>
+            {% for posts in post%}
+            <div>
+                <p>published:{{posts.publish_date}}</p>
+                <h1><a href="">{{posts.title}}</a></h1>
+                <div>{{posts.text|linebreaksbr}}</div>
+            </div>
+            {% endfor %}
         </div>
 </body>
 </html>

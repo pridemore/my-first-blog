@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-+    <link rel="stylesheet" href="{%static 'css/blog.css'%}">
-    <meta charset="UTF-8">
-    <title>Programming languages</title>
-</head>
-<body>
 
-<div>
-            <h1><a href="/">Programming Languages Publication Blog</a></h1>
-        </div>
-        <div>Update</div>
-        <div>
-            {% for posts in post%}
-            <div>
-                <p>published:{{posts.publish_date}}</p>
-                <h1><a href="">{{posts.title}}</a></h1>
-                <div>{{posts.text|linebreaksbr}}</div>
-            </div>
+{% extends 'blog/base.html'%}
+
+{% block content %}
+            {% for posts in post %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ posts.publish_date }}</p>
+                    </div>
+                    <h2><a href="{% url 'post_detail' pk=posts.pk %}">{{ posts.title }}</a></h2>
+                    <p>{{ posts.text|linebreaksbr }}</p>
+                </div>
             {% endfor %}
-        </div>
-</body>
-</html>
+
+{% endblock %}
